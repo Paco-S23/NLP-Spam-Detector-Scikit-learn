@@ -1,30 +1,77 @@
-Spam Detector with Logistic Regression and Scikit-learn
-This project is an implementation of a Machine Learning model to classify SMS messages as spam or ham (not spam).
+# 📧 Spam Detector with Logistic Regression and Scikit-learn
 
-Project Objective
-The main goal is to build a simple yet effective text classifier, demonstrating a complete Machine Learning workflow: from data loading and preparation to training and evaluating a predictive model.
+This project is an implementation of a **Machine Learning model** to classify SMS messages as **spam** or **ham (not spam)**.
 
-Dataset
-The "Email Spam Detection" dataset was sourced from Kaggle, published by user mfaisalqureshi. The original dataset is the "SMS Spam Collection" from the UCI Machine Learning Repository, which contains 5,572 English text messages, each labeled as either spam or ham.
+---
 
-Methodology
-The process followed to build the model was as follows:
+## 🎯 Project Objective
+The main goal is to build a **simple yet effective text classifier**, demonstrating a complete Machine Learning workflow:
+- Data loading and preparation
+- Text preprocessing
+- Model training
+- Model evaluation
 
-Data Loading: The Pandas library was used to load and explore the spam.csv file.
+---
 
-Text Preprocessing: The text messages were transformed into a numerical matrix using Scikit-learn's CountVectorizer. This method converts each message into a vector based on word frequency.
+## 📂 Dataset
+- **Source:** [Kaggle - Email Spam Detection (mfaisalqureshi)](https://www.kaggle.com)
+- **Original dataset:** ["SMS Spam Collection" - UCI Machine Learning Repository](https://archive.ics.uci.edu/ml/datasets/sms+spam+collection)
+- **Size:** 5,572 English text messages  
+- **Labels:** `spam` or `ham`
 
-Data Splitting: The dataset was divided into three parts to ensure an objective evaluation of the model:
+---
 
-Training Set (70%): For the model to learn the patterns.
+## ⚙️ Methodology
+1. **Data Loading**  
+   Used **Pandas** to load and explore the dataset (`spam.csv`).
 
-Validation Set (15%): To fine-tune and evaluate the model during development.
+2. **Text Preprocessing**  
+   Applied **CountVectorizer** (Scikit-learn) to convert SMS text into numerical vectors based on word frequencies.
 
-Test Set (15%): To measure the final performance of the model on unseen data.
+3. **Data Splitting**
+   - **Training Set (70%)** → Model learns the patterns  
+   - **Validation Set (15%)** → Fine-tuning and evaluation during development  
+   - **Test Set (15%)** → Final performance measurement  
 
-Model Training: A Logistic Regression model was trained, which is ideal for binary classification problems like this one.
+4. **Model Training**  
+   - Used **Logistic Regression** (ideal for binary classification problems).
 
-Evaluation: The model's performance was measured on the test set, using accuracy as the primary metric.
+5. **Evaluation**  
+   - Measured **accuracy** on the test set.  
 
-Results
-The final model achieved an accuracy of 98.56% on the test set, demonstrating high effectiveness in differentiating between spam and non-spam messages.
+---
+
+## 📊 Results
+- **Test Accuracy:** `98.56%`  
+- The model effectively differentiates between spam and non-spam messages.  
+
+---
+
+## 💻 Example Code Snippet
+```python
+import pandas as pd
+from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.linear_model import LogisticRegression
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import accuracy_score
+
+# Load dataset
+df = pd.read_csv("spam.csv", encoding="latin-1")[['v1','v2']]
+df.columns = ['label', 'message']
+
+# Preprocessing
+vectorizer = CountVectorizer()
+X = vectorizer.fit_transform(df['message'])
+y = df['label'].map({'ham': 0, 'spam': 1})
+
+# Split data
+X_train, X_temp, y_train, y_temp = train_test_split(X, y, test_size=0.3, random_state=42)
+X_val, X_test, y_val, y_test = train_test_split(X_temp, y_temp, test_size=0.5, random_state=42)
+
+# Train model
+model = LogisticRegression(max_iter=1000)
+model.fit(X_train, y_train)
+
+# Evaluate
+y_pred = model.predict(X_test)
+print("Accuracy:", accuracy_score(y_test, y_pred))
