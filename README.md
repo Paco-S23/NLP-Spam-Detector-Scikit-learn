@@ -1,4 +1,4 @@
-# 📧 Spam Detector with Logistic Regression and Scikit-learn
+[# 📧 Spam Detector with Logistic Regression and Scikit-learn
 
 This project is an implementation of a **Machine Learning model** to classify SMS messages as **spam** or **ham (not spam)**.
 
@@ -75,3 +75,4 @@ model.fit(X_train, y_train)
 # Evaluate
 y_pred = model.predict(X_test)
 print("Accuracy:", accuracy_score(y_test, y_pred))
+](https://www.kaggle.com/code/mfaisalqureshi/email-spam-detection-98-accuracy)
