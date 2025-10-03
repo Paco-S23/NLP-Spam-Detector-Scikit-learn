@@ -1,4 +1,4 @@
-[# 📧 Spam Detector with Logistic Regression and Scikit-learn
+# 📧 Spam Detector with Logistic Regression and Scikit-learn
 
 This project is an implementation of a **Machine Learning model** to classify SMS messages as **spam** or **ham (not spam)**.
 
