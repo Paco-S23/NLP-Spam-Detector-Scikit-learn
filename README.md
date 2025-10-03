@@ -14,7 +14,7 @@ The main goal is to build a **simple yet effective text classifier**, demonstrat
 ---
 
 ## 📂 Dataset
-- **Source:** [Kaggle - Email Spam Detection (mfaisalqureshi)]([https://www.kaggle.com](https://www.kaggle.com/code/mfaisalqureshi/email-spam-detection-98-accuracy))
+- **Source:** [Kaggle - Email Spam Detection (mfaisalqureshi)](https://www.kaggle.com/code/mfaisalqureshi/email-spam-detection-98-accuracy/notebook)
 - **Original dataset:** ["SMS Spam Collection" - UCI Machine Learning Repository](https://archive.ics.uci.edu/ml/datasets/sms+spam+collection)
 - **Size:** 5,572 English text messages  
 - **Labels:** `spam` or `ham`
